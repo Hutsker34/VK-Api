@@ -20,9 +20,9 @@ vk.updates.on('message_new', async (context) => {
         case '/start': {
             await context.send(`что я умею:
             
-		/weather - узнать погоду сейчас
-		/music - Песню мне 
-		/morse - морзе код`);
+		/weather - узнать погоду сейчас 
+		/morse - морзе код
+        /happiness - можешь купить себе друзей`);
             break;
         }
         case '/weather': {
@@ -33,15 +33,6 @@ vk.updates.on('message_new', async (context) => {
                 })
             ]);
             break;
-        }
-        case '/music':{
-            const song = ''
-            await Promise.all([
-                context.send('держи свой трек'),
-                context.sendAudioMessage({
-                    value: song
-                })
-            ])
         }
         case '/morse':{
             await Promise.all([
