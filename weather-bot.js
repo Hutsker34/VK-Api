@@ -43,6 +43,7 @@ vk.updates.on('message_new', async (context) => {
                     `
                 )
             ])
+            break;
         }
         case '/happiness':{
             const result = await new VK({
