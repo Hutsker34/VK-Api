@@ -4,12 +4,15 @@ const { weatherKey, token } = require('./config');
 const city = 'Saint Petersburg, RU'
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`
 
+var current = new Date();
+
+
 const emoji = {
     Thunderstorm: '🌩',
     Drizzle: '🌦',
     Rain:'🌧',
     Snow: '🌨',
-    Clear: '☀️',
+    Clear: current.getHours() > 18 || current.getHours() < 5 ? '🌜' : '☀️',
     Clouds: '☁️',
     unknown: '🤷‍♂️'
 }
@@ -40,7 +43,7 @@ async function getWeatherData(){
 async function getWeatherText(){
     const {weather, temp, wind} = await getWeatherData()
 
-    return `сейчас на улице ${convertToEmoji(weather)} , температура ${temp.toFixed()}, ветер ${wind} м/c `
+    return `сейчас на улице ${convertToEmoji(weather)} , температура ${temp.toFixed()} градусов, ветер ${wind} м/c `
 }
 
 async function getWeatherPhoto(){
