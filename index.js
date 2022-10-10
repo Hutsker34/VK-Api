@@ -13,7 +13,7 @@ const emoji = {
     Rain:'🌧',
     Snow: '🌨',
     Clear: current.getHours() > 18 || current.getHours() < 5 ? '🌜' : '☀️',
-    Clouds: '☁️',
+    Clouds: current.getHours() > 18 || current.getHours() < 5 ? '🌜' : '☁️',
     unknown: '🤷‍♂️'
 }
 
