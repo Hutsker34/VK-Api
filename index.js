@@ -4,7 +4,9 @@ const { weatherKey, token } = require('./config');
 const city = 'Saint Petersburg, RU'
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`
 
-var current = new Date();
+
+setInterval(getCurrectTime, 1000*60)
+let hours = ''
 
 
 const emoji = {
@@ -12,10 +14,24 @@ const emoji = {
     Drizzle: '🌦',
     Rain:'🌧',
     Snow: '🌨',
-    Clear: current.getHours() > 18 || current.getHours() < 5 ? '🌜' : '☀️',
-    Clouds: current.getHours() > 18 || current.getHours() < 5 ? '🌜' : '☁️',
+    Clear: hours > 18 || hours < 5 ? '🌜' : '☀️',
+    Clouds: hours > 18 || hours < 5 ? '🌜' : '☁️',
     unknown: '🤷‍♂️'
 }
+
+
+setInterval(getCurrectTime, 1000*55)
+function getCurrectTime(){
+    hours = new Date().getHours()
+}
+
+
+
+
+
+
+
+
 
 function convertToEmoji(key){
     if (key in emoji) {
