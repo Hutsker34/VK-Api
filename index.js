@@ -5,51 +5,51 @@ const city = 'Saint Petersburg, RU'
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`
 
 
-setInterval(getCurrectTime, 1000*60)
-let hours = ''
+// setInterval(getCurrectTime, 1000*60)
+// let hours = ''
 
 
-const emoji = {
-    Thunderstorm: '🌩',
-    Drizzle: '🌦',
-    Rain:'🌧',
-    Snow: '🌨',
-    Clear: hours > 18 || hours < 5 ? '🌜' : '☀️',
-    Clouds: hours > 18 || hours < 5 ? '🌜' : '☁️',
-    unknown: '🤷‍♂️'
-}
+// const emoji = {
+//     Thunderstorm: '🌩',
+//     Drizzle: '🌦',
+//     Rain:'🌧',
+//     Snow: '🌨',
+//     Clear: hours > 18 || hours < 5 ? '🌜' : '☀️',
+//     Clouds: hours > 18 || hours < 5 ? '🌜' : '☁️',
+//     unknown: '🤷‍♂️'
+// }
 
 
-setInterval(getCurrectTime, 1000*55)
-function getCurrectTime(){
-    hours = new Date().getHours()
-}
-
-
-
+// setInterval(getCurrectTime, 1000*55)
+// function getCurrectTime(){
+//     hours = new Date().getHours()
+// }
 
 
 
 
 
 
-function convertToEmoji(key){
-    if (key in emoji) {
-        return emoji[key]
-    } else {
-        return emoji['unknown']
-    }
-}
+
+
+
+// function convertToEmoji(key){
+//     if (key in emoji) {
+//         return emoji[key]
+//     } else {
+//         return emoji['unknown']
+//     }
+// }
 
 async function getWeatherData(){
     const {data} = await axios.get(url)
-    const weatherMain = data.weather[0].main
+    //const weatherMain = data.weather[0].main
     const mainTemp = data.main.temp
     const windSpeed = data.wind.speed
     const temp = convertToCelsius(mainTemp)
     
     return {
-            weather: weatherMain,
+            //weather: weatherMain,
             temp: temp,
             wind: windSpeed
     }
@@ -57,9 +57,9 @@ async function getWeatherData(){
 }
 
 async function getWeatherText(){
-    const {weather, temp, wind} = await getWeatherData()
+    const { temp, wind} = await getWeatherData()
 
-    return `сейчас на улице ${convertToEmoji(weather)} , температура ${temp.toFixed()} градусов, ветер ${wind} м/c `
+    return `сейчас на улице  температура ${temp.toFixed()} градусов, ветер ${wind} м/c `
 }
 
 async function getWeatherPhoto(){
